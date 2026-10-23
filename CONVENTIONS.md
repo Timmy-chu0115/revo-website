@@ -11,7 +11,7 @@ python3 build.py --images        # assets-src 有新圖或換圖時，重新產�
 python3 tools/shot.py /works/    # 桌機 1440、手機 390 整頁截圖到 tools/shots/
 ```
 
-Cloudflare Pages：建置指令留空，輸出目錄 `public`（public 會一起 commit）。
+Cloudflare（Workers 靜態網站）：推到 GitHub main 會自動部署，設定在 `wrangler.jsonc`（發布 `public/`，找不到的網址顯示 404.html）。public 會一起 commit。
 
 ## 檔案
 
