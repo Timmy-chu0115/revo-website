@@ -1,0 +1,90 @@
+/* ==========================================================================
+   作品案例 /works/
+   ========================================================================== */
+.works-hero-inner { display: flex; flex-direction: column; gap: 16px; padding-block: 64px 40px; }
+.works-filters { margin-top: 8px; }
+@media (min-width: 900px) {
+  .works-hero-inner { align-items: center; text-align: center; gap: 24px; padding-block: 112px 56px; }
+  .works-filters { margin-top: 16px; justify-content: center; }
+}
+
+.works-list { padding-bottom: 56px; }
+@media (min-width: 900px) { .works-list { padding-top: 24px; padding-bottom: 96px; } }
+
+.works-case { display: flex; flex-direction: column; gap: 20px; padding-block: 40px 48px; border-top: 1px solid var(--ink); scroll-margin-top: var(--header-h); }
+.works-case[hidden] { display: none; }
+@media (min-width: 900px) { .works-case { gap: 32px; padding-block: 72px; } }
+
+.works-case-head { display: flex; flex-direction: column; gap: 8px; }
+.works-case-title { display: flex; flex-direction: column; gap: 8px; }
+.works-type { font-size: 12px; letter-spacing: 0.16em; color: var(--label); }
+.works-name { font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.4; letter-spacing: 0.05em; }
+.works-cond { font-size: 13px; line-height: 1.7; color: var(--muted); }
+@media (min-width: 900px) {
+  .works-case-head { flex-direction: row; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; }
+  .works-case-title { gap: 10px; }
+  .works-type { font-size: 13px; }
+  .works-name { font-size: 36px; letter-spacing: 0.06em; }
+  .works-cond { font-size: 15px; }
+}
+.works-one { font-family: var(--serif); font-weight: 500; font-size: 17px; line-height: 1.8; }
+@media (min-width: 900px) { .works-one { max-width: 760px; font-size: 21px; } }
+
+/* 空間切換＋前後對照 */
+.works-ba { display: flex; flex-direction: column; gap: 12px; }
+@media (min-width: 900px) { .works-ba { gap: 16px; } }
+.works-spaces .chip { flex: 0 0 auto; min-height: 36px; padding: 0 14px; font-size: 13px; }
+@media (min-width: 900px) { .works-spaces { flex-wrap: wrap; } .works-spaces .chip { min-height: 40px; padding: 0 18px; font-size: 14px; } }
+.works-pair { display: grid; grid-template-columns: minmax(0, 1fr); }
+.works-pair[hidden] { display: none; }
+.works-shot { position: relative; }
+.works-shot picture.media { height: 420px; }
+@media (max-width: 899px) {
+  .works-case[data-side="after"] .works-before,
+  .works-case[data-side="before"] .works-after { display: none; }
+}
+@media (min-width: 900px) {
+  .works-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .works-shot picture.media { height: 480px; }
+}
+
+/* 手機：BEFORE / AFTER 切換 */
+.works-toggle { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 999px; background: var(--sand-2); }
+.works-toggle button { min-height: 40px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font-size: 12px; letter-spacing: 0.16em; cursor: pointer; transition: background-color .2s, color .2s; }
+.works-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--on-dark); }
+
+/* 我們做了什麼 */
+.works-foot { display: flex; flex-direction: column; gap: 16px; padding-top: 4px; }
+.works-did { display: flex; flex-direction: column; gap: 12px; }
+.works-did-label { font-size: 13px; letter-spacing: 0.16em; color: var(--label); }
+.works-did-list { display: flex; flex-direction: column; gap: 8px; }
+.works-did-list li { position: relative; padding-left: 17px; font-size: 15px; line-height: 1.7; color: var(--body); }
+.works-did-list li::before { content: ""; position: absolute; left: 0; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: #B9A48E; }
+.works-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.works-actions .btn { min-height: 48px; padding: 0 12px; font-size: 14px; }
+@media (min-width: 900px) {
+  .works-foot { flex-direction: row; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px 64px; padding-top: 0; }
+  .works-did { flex: 1 1 520px; gap: 14px; }
+  .works-did-label { font-size: 14px; }
+  .works-did-list { gap: 10px; }
+  .works-did-list li { padding-left: 18px; font-size: 16px; }
+  .works-did-list li::before { width: 6px; height: 6px; }
+  .works-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .works-actions .btn { min-height: 48px; padding: 0 24px; font-size: 15px; }
+}
+
+/* 作品集 */
+.works-wall-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 12px; margin-top: 28px; }
+.works-wall-item { display: flex; flex-direction: column; gap: 10px; }
+.works-wall-img { height: 200px; }
+.works-wall-cap { display: flex; flex-direction: column; gap: 2px; }
+.works-wall-name { font-family: var(--serif); font-weight: 600; font-size: 17px; letter-spacing: 0.04em; }
+.works-wall-meta { font-size: 12px; line-height: 1.6; color: var(--muted); }
+@media (min-width: 900px) {
+  .works-wall-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 24px; margin-top: 48px; }
+  .works-wall-item { gap: 14px; }
+  .works-wall-img { height: 300px; }
+  .works-wall-cap { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .works-wall-name { font-size: 20px; }
+  .works-wall-meta { font-size: 13px; }
+}

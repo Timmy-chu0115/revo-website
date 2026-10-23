@@ -1,0 +1,814 @@
+{
+ "danying-card-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "danying-card-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "danying-pair1-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "danying-pair1-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "danying-pair2-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "danying-pair2-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "danying-pair3-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "danying-pair3-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "danying-wall-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "danying-wall-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "fengxiang-wall-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "fengxiang-wall-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "fushan-28": {
+  "fallback": 1200,
+  "h": 2400,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "fushan-29": {
+  "fallback": 1200,
+  "h": 2400,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "fushan-31": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 2400,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "fushan-card-desktop": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "fushan-card-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "fushan-hero-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "fushan-pair1-after": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "fushan-pair1-before": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "fushan-pair2-after": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "fushan-pair2-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "fushan-pair3-after": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "fushan-pair3-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "fushan-wall-desktop": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "fushan-wall-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "liantan-31": {
+  "fallback": 1200,
+  "h": 1600,
+  "w": 2400,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "liantan-card-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "liantan-card-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "liantan-pair1-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "liantan-pair1-before": {
+  "fallback": 1012,
+  "h": 1800,
+  "w": 1012,
+  "widths": [
+   480,
+   800,
+   1012
+  ]
+ },
+ "liantan-pair2-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "liantan-pair2-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "liantan-pair3-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "liantan-pair3-before": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "liantan-wall-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "liantan-wall-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "metro-card-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "metro-card-phone": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "metro-pair1-after": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "metro-pair1-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "metro-pair2-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "metro-pair2-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "metro-pair3-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "metro-pair3-before": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "metro-wall-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "metro-wall-phone": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "qingxi-wall-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "qingxi-wall-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "senhuo-card-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "senhuo-card-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "senhuo-pair1-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "senhuo-pair1-before": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "senhuo-pair2-after": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "senhuo-pair2-before": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "senhuo-pair3-after": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "senhuo-pair3-before": {
+  "fallback": 1200,
+  "h": 1350,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "senhuo-wall-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "senhuo-wall-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "weilai-01-living": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-02-sofa": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-03-dining": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-04-kitchen": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-05-kitchen-detail": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-06-master": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-07-master-view": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-08-multi": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-09-bath": {
+  "fallback": 1012,
+  "h": 1800,
+  "w": 1012,
+  "widths": [
+   480,
+   800,
+   1012
+  ]
+ },
+ "weilai-10-lamp": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "weilai-11-living-alt": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilai-12-mood": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "weilaixu-wall-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "weilaixu-wall-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "yuedu-wall-desktop": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yuedu-wall-phone": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ }
+}

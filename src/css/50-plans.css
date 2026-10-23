@@ -1,0 +1,144 @@
+/* ==========================================================================
+   屋主服務 /plans/
+   ========================================================================== */
+body[data-page="plans"] .h1 { font-size: 32px; line-height: 1.35; }
+@media (min-width: 900px) {
+  body[data-page="plans"] .h1 { font-size: 52px; line-height: 1.3; }
+  body[data-page="plans"] main .h2 { font-size: 36px; }
+  body[data-page="plans"] .cta-band .h2 { font-size: 40px; }
+  body[data-page="plans"] .cta-band .lead { font-size: 17px; }
+}
+
+.plans-head { display: flex; flex-direction: column; gap: 12px; }
+@media (min-width: 900px) { .plans-head { gap: 16px; } }
+.plans-head-center { text-align: left; }
+@media (min-width: 900px) { .plans-head-center { align-items: center; text-align: center; } }
+.plans-hero-text .lead, .plans-space-lead { color: var(--body); }
+.pn { font-family: var(--serif); font-weight: 600; letter-spacing: 0.06em; color: var(--ink); }
+.pz { font-size: 13px; font-weight: 400; letter-spacing: 0.12em; color: var(--label); }
+
+/* ---------- 開場 ---------- */
+.plans-hero { padding-top: 48px; }
+.plans-hero-grid { display: flex; flex-direction: column; gap: 32px; }
+.plans-hero-text { display: flex; flex-direction: column; gap: 12px; }
+.plans-hero-text .lead { margin-top: 4px; }
+.plans-hero-img { width: 100%; aspect-ratio: 350 / 420; }
+@media (min-width: 900px) {
+  .plans-hero { padding-top: 80px; }
+  .plans-hero-grid { flex-direction: row; align-items: center; gap: 96px; }
+  .plans-hero-text { flex: 1 1 440px; gap: 24px; }
+  .plans-hero-text .lead { max-width: 480px; margin-top: 0; font-size: 17px; }
+  .plans-hero-img { flex: 0 1 480px; height: 600px; aspect-ratio: auto; }
+}
+
+/* ---------- 方案比較 ---------- */
+.plans-compare { padding-block: 72px 64px; }
+@media (min-width: 900px) { .plans-compare { padding-block: 112px 104px; } }
+.plans-table-wrap { margin-top: 48px; overflow-x: auto; }
+.plans-table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 15px; line-height: 1.7; }
+.plans-table th, .plans-table td { text-align: left; vertical-align: top; }
+.plans-table thead th { padding: 0 16px 20px; border-bottom: 1px solid var(--ink); width: 28%; }
+.plans-table thead th:first-child { width: 16%; padding-left: 0; }
+.plans-table thead .pn { display: block; font-size: 22px; }
+.plans-table tbody { color: var(--body); }
+.plans-table tbody th { padding: 20px 16px 20px 0; font-weight: 500; color: var(--ink); }
+.plans-table tbody td { padding: 20px 16px; }
+.plans-table tbody tr > * { border-bottom: 1px solid var(--line); }
+.plans-table tbody tr:last-child > * { border-bottom-color: var(--ink); }
+
+.plans-seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: 28px; padding: 4px; background: var(--sand-2); border-radius: 999px; }
+.plans-seg button { height: 44px; border: 0; border-radius: 999px; background: transparent; color: var(--body); font-size: 14px; cursor: pointer; }
+.plans-seg button[aria-selected="true"] { background: var(--ink); color: var(--on-dark); font-weight: 500; }
+.plans-card { margin-top: 20px; padding: 28px 24px; }
+.plans-card-name { display: flex; align-items: baseline; gap: 12px; }
+.plans-card-name .pn { font-size: 22px; }
+.plans-card-name .pz { font-size: 14px; }
+.plans-card-one { margin-top: 12px; font-size: 15px; line-height: 1.8; }
+.plans-rows { margin-top: 20px; display: flex; flex-direction: column; }
+.plans-rows > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-top: 1px solid var(--card-line); font-size: 14px; line-height: 1.75; }
+.plans-rows dt { font-weight: 500; }
+.plans-rows dd, .plans-more dd { color: var(--body); }
+.plans-more { margin-top: 4px; border-top: 1px solid var(--ink); }
+.plans-more > summary { display: flex; align-items: center; justify-content: space-between; min-height: 52px; cursor: pointer; list-style: none; font-size: 15px; font-weight: 500; }
+.plans-more > summary::-webkit-details-marker { display: none; }
+.plans-more .acc-icon { flex-shrink: 0; transition: transform .2s; }
+.plans-more[open] .acc-icon { transform: rotate(45deg); }
+.plans-more dl { display: flex; flex-direction: column; }
+.plans-more dl > div { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-top: 1px solid var(--card-line); font-size: 14px; line-height: 1.8; }
+.plans-more dt { font-weight: 500; }
+
+/* ---------- 三問 ---------- */
+.plans-quiz { padding-block: 72px 64px; }
+@media (min-width: 900px) { .plans-quiz { padding-block: 104px; } }
+.plans-q-list { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+.plans-q { display: flex; flex-direction: column; gap: 14px; padding: 24px 22px; text-decoration: none; transition: border-color .2s; }
+.plans-q:hover { border-color: var(--line-3); }
+.plans-q-no { font-family: var(--serif); font-size: 20px; color: var(--label); }
+.plans-q p { font-size: 16px; line-height: 1.75; color: var(--ink); }
+.plans-q-ans { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--card-line); font-size: 14px; }
+.plans-q-ans .yes { color: var(--label); }
+.plans-q-ans .to { font-weight: 500; }
+.plans-quiz-note { margin-top: 24px; font-size: 14px; line-height: 1.8; color: var(--body); }
+.plans-quiz-note a { font-weight: 500; }
+@media (min-width: 900px) {
+  .plans-q-list { flex-direction: row; gap: 24px; margin-top: 56px; }
+  .plans-q { flex: 1 1 0; gap: 28px; padding: 36px 32px; }
+  .plans-q-no { font-size: 28px; }
+  .plans-q p { font-size: 18px; }
+  .plans-q-ans { padding-top: 20px; font-size: 15px; }
+  .plans-quiz-note { margin-top: 40px; text-align: center; font-size: 16px; }
+}
+
+/* ---------- 方案細節（桌機） ---------- */
+.plans-detail { padding-block: 112px 64px; }
+.plans-article { display: flex; flex-wrap: wrap; gap: 32px 64px; padding: 48px 0; border-top: 1px solid var(--ink); }
+.plans-detail .plans-head + .plans-article { margin-top: 56px; }
+.plans-article:last-child { border-bottom: 1px solid var(--ink); }
+.plans-article-intro { flex: 1 1 300px; display: flex; flex-direction: column; gap: 14px; }
+.plans-article-intro h3 { font-family: var(--serif); font-weight: 600; font-size: 30px; letter-spacing: 0.06em; }
+.plans-article-intro .pz { font-size: 15px; }
+.plans-article-intro .one { margin-top: 8px; font-size: 18px; line-height: 1.8; }
+.plans-article-intro .fit { font-size: 14px; line-height: 1.8; color: var(--muted); }
+.plans-article dl { flex: 2 1 560px; display: grid; grid-template-columns: 120px minmax(0, 1fr); font-size: 15px; line-height: 1.85; color: var(--body); }
+.plans-article dt { padding: 18px 0; font-weight: 500; color: var(--ink); border-top: 1px solid var(--line); }
+.plans-article dd { padding: 18px 0; border-top: 1px solid var(--line); }
+.plans-article dt:first-of-type, .plans-article dd:first-of-type { padding-top: 0; border-top: 0; }
+.plans-article dt:last-of-type, .plans-article dd:last-of-type { padding-bottom: 0; }
+
+/* ---------- 空間服務 ---------- */
+.plans-space { padding-block: 72px 64px; }
+@media (min-width: 900px) { .plans-space { padding-block: 64px 112px; } }
+.plans-space-lead { font-size: 15px; line-height: 1.8; }
+.plans-space-list { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+.plans-space-card { display: flex; flex-direction: column; gap: 10px; padding: 24px 22px; }
+.plans-space-card h3 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; }
+.plans-space-card h3 .pn { font-size: 20px; }
+.plans-space-card p { font-size: 14px; line-height: 1.85; color: var(--body); }
+.plans-works-btn.only-mobile { margin-top: 24px; }
+@media (min-width: 900px) {
+  .plans-space-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; }
+  .plans-space-head .plans-head { max-width: 680px; }
+  .plans-space-lead { font-size: 17px; }
+  .plans-works-btn { min-height: 48px; padding: 0 24px; font-size: 15px; }
+  .plans-space-list { flex-direction: row; gap: 24px; margin-top: 48px; }
+  .plans-space-card { flex: 1 1 0; gap: 14px; padding: 40px 36px; }
+  .plans-space-card h3 { gap: 12px; }
+  .plans-space-card h3 .pn { font-size: 24px; }
+  .plans-space-card h3 .pz { font-size: 15px; }
+  .plans-space-card p { font-size: 16px; line-height: 1.9; }
+}
+
+/* ---------- 常見問題 ---------- */
+.plans-faq { padding-block: 72px 64px; }
+.plans-faq-list { margin-top: 24px; }
+.plans-faq details.acc { border-top-color: var(--line-2); }
+.plans-faq .acc-body p { font-size: 14px; line-height: 1.85; color: var(--body); }
+@media (min-width: 900px) {
+  .plans-faq { padding-block: 104px; }
+  .plans-faq-grid { display: flex; flex-wrap: wrap; gap: 40px 80px; }
+  .plans-faq-grid > .plans-head { flex: 1 1 300px; }
+  .plans-faq-list { flex: 2 1 560px; min-width: 0; margin-top: 0; }
+  .plans-faq details.acc > summary { min-height: 68px; font-size: 18px; }
+  .plans-faq .acc-body { padding-bottom: 24px; }
+  .plans-faq .acc-body p { font-size: 15px; line-height: 1.9; }
+}

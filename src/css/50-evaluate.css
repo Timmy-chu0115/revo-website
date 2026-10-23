@@ -1,0 +1,98 @@
+/* ==========================================================================
+   免費出租評估 /evaluate/
+   ========================================================================== */
+.eval { padding-block: 48px 64px; }
+.eval-grid { display: flex; flex-direction: column; gap: 32px; }
+.eval-intro { display: flex; flex-direction: column; gap: 16px; }
+.eval-title { font-family: var(--serif); font-weight: 600; font-size: 28px; line-height: 1.45; letter-spacing: 0.04em; }
+.eval-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); }
+.eval-steps { margin-top: 8px; }
+.eval-steps li { display: flex; gap: 18px; padding: 18px 0; border-top: 1px solid var(--line-2); font-size: 16px; line-height: 1.7; }
+.eval-steps li:last-child { border-bottom: 1px solid var(--line-2); }
+.eval-direct { font-size: 14px; line-height: 1.8; color: var(--muted); }
+.eval-direct.only-mobile { margin-top: 20px; text-align: center; }
+
+@media (min-width: 900px) {
+  .eval { padding-block: 88px 128px; }
+  .eval-grid { flex-direction: row; align-items: flex-start; gap: 96px; }
+  .eval-intro { flex: 1 1 380px; min-width: 0; position: sticky; top: calc(var(--header-h) + 32px); gap: 24px; }
+  .eval-title { font-size: 44px; line-height: 1.35; letter-spacing: 0.05em; }
+  .eval-intro .lead { font-size: 17px; }
+  .eval-side { flex: 1 1 520px; min-width: 0; }
+}
+
+/* ---------- 表單卡片 ---------- */
+.eval-card { padding: 28px 20px; }
+@media (min-width: 900px) { .eval-card { padding: 44px; } }
+
+.eval-form { display: flex; flex-direction: column; gap: 28px; }
+.eval-form[hidden] { display: none; }
+.eval-fs { margin: 0; padding: 0; border: 0; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.eval-h2 { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: 0.04em; }
+.eval-divider { height: 1px; background: #DDD2C1; }
+
+.eval-field { display: flex; flex-direction: column; gap: 8px; }
+.eval-field:has(.chips) { gap: 10px; }
+.eval-label { font-size: 14px; font-weight: 500; line-height: 1.6; }
+.eval-label .req, .eval-consent .req { color: var(--accent); }
+.eval-sub { font-size: 12px; font-weight: 400; color: var(--muted); }
+.eval-hint { font-size: 12px; color: var(--muted); }
+
+.eval-input {
+  width: 100%; height: 52px; padding: 0 14px; border: 1px solid var(--line-3); border-radius: 6px;
+  background: #fff; font-family: inherit; font-size: 16px; color: var(--ink);
+  -webkit-appearance: none; appearance: none;
+}
+.eval-input::placeholder { color: #8A929A; }
+.eval-input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+select.eval-input {
+  padding-right: 40px; cursor: pointer;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231F2A33' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;
+}
+select.eval-input:invalid { color: #8A929A; }
+select.eval-input option { color: var(--ink); }
+textarea.eval-input { height: auto; min-height: 96px; padding: 12px 14px; line-height: 1.6; resize: vertical; }
+input[type="number"].eval-input { -moz-appearance: textfield; }
+input[type="number"].eval-input::-webkit-inner-spin-button,
+input[type="number"].eval-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+.eval-contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px 16px; }
+
+/* 選項按鈕：未選為白底 */
+.eval-form .chip { min-height: 42px; padding: 0 14px; background: #fff; }
+.eval-form .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--on-dark); }
+@media (min-width: 900px) { .eval-form .chip { min-height: 44px; padding: 0 18px; } }
+
+.eval-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.7; color: var(--body); cursor: pointer; }
+.eval-consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--ink); flex-shrink: 0; cursor: pointer; }
+
+/* ---------- 錯誤 ---------- */
+.eval-err { display: flex; align-items: flex-start; gap: 6px; font-size: 13px; line-height: 1.6; color: var(--accent); }
+.eval-err::before { content: "!"; flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; line-height: 16px; text-align: center; }
+.eval-err[hidden] { display: none; }
+.eval-input[aria-invalid="true"] { border-color: var(--accent); background-color: #FFFBF8; }
+.eval-field.is-invalid .chip[aria-pressed="false"] { border-color: #C9A58A; }
+.eval-consent input[aria-invalid="true"] { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.eval-submit { display: flex; flex-direction: column; gap: 12px; }
+.eval-btn { min-height: 54px; letter-spacing: 0.04em; }
+.eval-btn[disabled] { opacity: .65; cursor: progress; }
+.eval-note { font-size: 12px; text-align: center; color: var(--muted); }
+.eval-alert { padding: 14px 16px; border-radius: 6px; background: #F9ECE7; color: var(--ink); font-size: 14px; line-height: 1.7; }
+.eval-alert a { color: inherit; font-weight: 500; }
+
+/* 防機器人欄位：畫面上不顯示 */
+.eval-hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---------- 送出完成 ---------- */
+.eval-done { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+.eval-done[hidden] { display: none; }
+.eval-check { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: var(--on-dark); display: flex; align-items: center; justify-content: center; }
+.eval-done-title { font-family: var(--serif); font-weight: 600; font-size: 28px; line-height: 1.45; letter-spacing: 0.04em; }
+.eval-done-title:focus { outline: none; }
+.eval-faster { width: 100%; display: flex; flex-direction: column; gap: 12px; padding: 22px; border-radius: 6px; background: var(--cream); border: 1px solid var(--card-line); }
+.eval-faster-t { font-size: 15px; font-weight: 500; }
+.eval-faster p { font-size: 14px; line-height: 1.8; color: var(--body); }
+.eval-faster .btn { min-height: 50px; font-size: 15px; }
+.eval-next { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; }
+.eval-next a { min-height: 44px; display: inline-flex; align-items: center; }

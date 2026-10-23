@@ -1,0 +1,111 @@
+/* ==========================================================================
+   關於 REVO /about/
+   ========================================================================== */
+body[data-page="about"] .h1 { font-size: 28px; line-height: 1.5; }
+@media (min-width: 900px) {
+  body[data-page="about"] .h1 { font-size: 48px; line-height: 1.45; }
+}
+.about-head { display: flex; flex-direction: column; gap: 12px; }
+@media (min-width: 900px) {
+  .about-head { gap: 16px; }
+  .about-head-center { align-items: center; text-align: center; }
+}
+
+/* ---------- 開場 ---------- */
+.about-hero-inner { display: flex; flex-direction: column; gap: 14px; padding-block: 64px 56px; }
+.about-hero-inner .lead { margin-top: 4px; }
+@media (min-width: 900px) {
+  .about-hero-inner { max-width: calc(960px + var(--gutter) * 2); align-items: center; text-align: center; gap: 28px; padding-block: 128px 112px; }
+  .about-hero-inner .lead { margin-top: 0; }
+}
+
+/* ---------- 創辦故事 ---------- */
+.about-story { padding-bottom: 72px; }
+.about-story-grid { display: flex; flex-direction: column; }
+.about-story-img { width: 100%; aspect-ratio: 350 / 420; }
+.about-story-text { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; }
+.about-quote { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.95; }
+.about-story-body { font-size: 15px; line-height: 1.95; color: var(--body); }
+.about-sign { display: flex; align-items: center; gap: 12px; margin-top: 4px; font-size: 14px; letter-spacing: 0.08em; color: var(--label); }
+.about-sign .line { width: 32px; height: 1px; background: var(--label); }
+@media (min-width: 900px) {
+  .about-story { padding-bottom: 128px; }
+  .about-story-grid { flex-direction: row; align-items: center; gap: 96px; }
+  .about-story-img { flex: 0 1 480px; height: 600px; aspect-ratio: auto; }
+  .about-story-text { flex: 1 1 440px; gap: 28px; margin-top: 0; }
+  .about-quote { font-size: 21px; line-height: 2; letter-spacing: 0.02em; }
+  .about-story-body { font-size: 17px; line-height: 2; }
+  .about-sign { gap: 14px; margin-top: 8px; font-size: 15px; }
+  .about-sign .line { width: 40px; }
+}
+
+/* ---------- 創辦人 ---------- */
+.about-founder { padding-block: 72px 64px; }
+.about-founder-id { display: flex; align-items: center; gap: 20px; }
+.about-founder-id img { width: 120px; height: 120px; flex-shrink: 0; }
+.about-founder-name { display: flex; flex-direction: column; gap: 6px; }
+.about-founder-name .nm { font-family: var(--serif); font-weight: 600; font-size: 21px; line-height: 1.4; letter-spacing: 0.04em; }
+.about-founder-name .rl { font-size: 13px; letter-spacing: 0.12em; color: var(--label); }
+.about-cv { margin-top: 32px; display: flex; flex-direction: column; border-bottom: 1px solid var(--line-2); }
+.about-cv > div { display: flex; flex-direction: column; gap: 4px; padding: 16px 0; border-top: 1px solid var(--line-2); }
+.about-cv dt { font-size: 13px; letter-spacing: 0.08em; color: var(--label); }
+.about-cv dd { font-size: 14px; line-height: 1.75; }
+.about-cv .nw { font-size: 13.5px; }
+@media (max-width: 899px) { .about-cv .nw { display: inline-block; } }
+@media (min-width: 900px) {
+  .about-founder { padding-block: 112px; }
+  .about-founder-grid { display: flex; flex-wrap: wrap; gap: 56px 96px; }
+  .about-founder-id { flex: 1 1 300px; flex-direction: column; align-items: flex-start; gap: 24px; }
+  .about-founder-id img { width: 280px; height: 280px; }
+  .about-founder-name .nm { font-size: 28px; letter-spacing: 0.06em; }
+  .about-founder-name .rl { font-size: 15px; }
+  .about-cv { flex: 2 1 560px; align-self: center; margin-top: 0; border-bottom: 0; }
+  .about-cv > div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 0; padding: 22px 0; border-top: 1px solid var(--line-2); }
+  .about-cv > div:first-child { padding-top: 0; border-top: 0; }
+  .about-cv > div:last-child { padding-bottom: 0; }
+  .about-cv dt { font-size: 16px; font-weight: 500; letter-spacing: 0; color: var(--ink); line-height: 1.85; }
+  .about-cv dd { font-size: 16px; line-height: 1.85; color: var(--body); }
+  .about-cv .nw { font-size: inherit; }
+}
+
+/* ---------- 三個堅持 ---------- */
+.about-values { padding-block: 72px 64px; }
+.about-values-list { display: flex; flex-direction: column; gap: 32px; margin-top: 32px; }
+.about-value { display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 1px solid var(--ink); }
+.about-value-title { display: flex; align-items: baseline; gap: 14px; }
+.about-value-title .num { font-size: 20px; }
+.about-value h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: 0.06em; }
+.about-value p { font-size: 15px; line-height: 1.85; color: var(--body); }
+@media (min-width: 900px) {
+  .about-values { padding-block: 128px 120px; }
+  .about-values-list { flex-direction: row; gap: 48px; margin-top: 64px; }
+  .about-value { flex: 1 1 0; gap: 16px; padding-top: 28px; }
+  .about-value-title { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .about-value-title .num { font-size: 28px; }
+  .about-value h3 { font-size: 24px; }
+  .about-value p { font-size: 16px; line-height: 1.9; }
+}
+
+/* ---------- 合作夥伴 ---------- */
+.about-partners { padding-block: 72px 64px; }
+.about-partners-lead { font-size: 15px; line-height: 1.85; color: var(--body); }
+.about-partner-list { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+.about-partner { display: flex; flex-direction: column; gap: 20px; padding: 32px 24px; }
+.about-partner img { width: auto; }
+.about-partner img.alife { height: 36px; }
+.about-partner img.sand { height: 64px; }
+.about-partner p { font-size: 14px; line-height: 1.9; color: var(--body); }
+@media (min-width: 900px) {
+  .about-partners { padding-block: 112px; }
+  .about-partners-lead { max-width: 720px; font-size: 17px; line-height: 1.9; }
+  .about-partner-list { flex-direction: row; gap: 24px; margin-top: 64px; }
+  .about-partner { flex: 1 1 0; gap: 28px; padding: 48px 44px; }
+  .about-partner .logo-box { height: 96px; display: flex; align-items: center; }
+  .about-partner img.alife { height: 48px; }
+  .about-partner img.sand { height: 96px; }
+  .about-partner p { font-size: 16px; line-height: 1.95; }
+}
+
+/* ---------- 結尾 ---------- */
+.about-cta-info { display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.8; color: var(--on-dark-2); }
+@media (min-width: 900px) { .about-cta-info { gap: 6px; font-size: 15px; } }

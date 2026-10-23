@@ -1,0 +1,22 @@
+/* ==========================================================================
+   隱私權政策 /privacy/
+   ========================================================================== */
+.privacy { padding-block: 48px 64px; }
+.privacy-inner { display: flex; flex-direction: column; gap: 16px; }
+.privacy-title { font-family: var(--serif); font-weight: 600; font-size: 28px; line-height: 1.45; letter-spacing: 0.04em; }
+.privacy-list { margin-top: 8px; border-bottom: 1px solid var(--line-2); }
+.privacy-list > div { display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid var(--line-2); }
+.privacy-list dt { font-family: var(--serif); font-weight: 600; font-size: 16px; letter-spacing: 0.04em; }
+.privacy-list dd { font-size: 14px; line-height: 1.85; color: var(--body); overflow-wrap: anywhere; }
+.privacy-list a { color: var(--ink); }
+.privacy-tbd { background: #F9ECE7; color: var(--accent); padding: 0 4px; border-radius: 3px; }
+@media (min-width: 900px) {
+  .privacy { padding-block: 96px 128px; }
+  .privacy-inner { gap: 28px; }
+  .privacy-title { font-size: 44px; line-height: 1.35; letter-spacing: 0.05em; }
+  .privacy-inner .lead { font-size: 17px; }
+  .privacy-list { margin-top: 16px; }
+  .privacy-list > div { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 24px; padding: 24px 0; }
+  .privacy-list dt { font-size: 18px; }
+  .privacy-list dd { font-size: 16px; line-height: 1.9; }
+}
