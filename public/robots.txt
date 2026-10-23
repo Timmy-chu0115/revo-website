@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://revo-website.pages.dev/sitemap.xml
+Sitemap: https://revo-website.revolife-info.workers.dev/sitemap.xml
