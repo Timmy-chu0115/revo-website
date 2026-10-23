@@ -1,4 +1,42 @@
 {
+ "boai34f-wall-desktop": {
+  "fallback": 1200,
+  "h": 1080,
+  "w": 1616,
+  "widths": [
+   480,
+   800,
+   1200,
+   1616
+  ]
+ },
+ "boai34f-wall-phone": {
+  "fallback": 1200,
+  "h": 1800,
+  "w": 1350,
+  "widths": [
+   480,
+   800,
+   1200,
+   1350
+  ]
+ },
+ "boai3f-wall-desktop": {
+  "fallback": 480,
+  "h": 360,
+  "w": 480,
+  "widths": [
+   480
+  ]
+ },
+ "boai3f-wall-phone": {
+  "fallback": 359,
+  "h": 538,
+  "w": 359,
+  "widths": [
+   359
+  ]
+ },
  "danying-card-desktop": {
   "fallback": 1200,
   "h": 1200,
@@ -105,6 +143,22 @@
    480,
    800,
    1200
+  ]
+ },
+ "dashu-wall-desktop": {
+  "fallback": 480,
+  "h": 360,
+  "w": 480,
+  "widths": [
+   480
+  ]
+ },
+ "dashu-wall-phone": {
+  "fallback": 360,
+  "h": 480,
+  "w": 360,
+  "widths": [
+   360
   ]
  },
  "fengxiang-wall-desktop": {
@@ -280,6 +334,26 @@
    800,
    1200,
    1350
+  ]
+ },
+ "jieshou-wall-desktop": {
+  "fallback": 1108,
+  "h": 1477,
+  "w": 1108,
+  "widths": [
+   480,
+   800,
+   1108
+  ]
+ },
+ "jieshou-wall-phone": {
+  "fallback": 1108,
+  "h": 1477,
+  "w": 1108,
+  "widths": [
+   480,
+   800,
+   1108
   ]
  },
  "liantan-31": {

@@ -969,12 +969,15 @@ body[data-page="plans"] .h1 { font-size: 32px; line-height: 1.35; }
 @media (min-width: 900px) { .works-list { padding-top: 24px; padding-bottom: 96px; } }
 
 .works-case { display: flex; flex-direction: column; gap: 20px; padding-block: 40px 48px; border-top: 1px solid var(--ink); scroll-margin-top: var(--header-h); }
-.works-case[hidden] { display: none; }
+.works-case[hidden], [data-works-group][hidden] { display: none; }
 @media (min-width: 900px) { .works-case { gap: 32px; padding-block: 72px; } }
 
 .works-case-head { display: flex; flex-direction: column; gap: 8px; }
 .works-case-title { display: flex; flex-direction: column; gap: 8px; }
 .works-type { font-size: 12px; letter-spacing: 0.16em; color: var(--label); }
+.works-type-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.works-plan { padding: 4px 10px; border-radius: 999px; background: var(--ink); color: var(--on-dark); font-size: 11px; letter-spacing: 0.08em; white-space: nowrap; }
+@media (min-width: 900px) { .works-type-row { gap: 12px; } .works-plan { padding: 5px 12px; font-size: 12px; } }
 .works-name { font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.4; letter-spacing: 0.05em; }
 .works-cond { font-size: 13px; line-height: 1.7; color: var(--muted); }
 @media (min-width: 900px) {
@@ -1030,6 +1033,34 @@ body[data-page="plans"] .h1 { font-size: 32px; line-height: 1.35; }
   .works-actions .btn { min-height: 48px; padding: 0 24px; font-size: 15px; }
 }
 
+/* 空間服務 */
+.works-space { padding-bottom: 64px; scroll-margin-top: var(--header-h); }
+.works-space-head { display: flex; flex-direction: column; gap: 12px; padding-top: 40px; border-top: 1px solid var(--ink); }
+.works-space-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; margin-top: 32px; }
+.works-space-card { display: flex; flex-direction: column; gap: 12px; }
+.works-space-photo { position: relative; }
+.works-space-photo picture.media { height: 300px; }
+.works-space-cap { display: flex; flex-direction: column; gap: 4px; padding-top: 2px; }
+.works-space-name { font-family: var(--serif); font-weight: 600; font-size: 20px; line-height: 1.5; letter-spacing: 0.04em; }
+.works-space-meta { font-size: 12px; line-height: 1.6; color: var(--muted); }
+.works-space-one { font-size: 15px; line-height: 1.8; color: var(--body); }
+.works-space-cta { display: flex; flex-direction: column; gap: 20px; margin-top: 48px; padding: 28px 20px; }
+.works-space-cta .body { font-size: 14px; }
+@media (min-width: 900px) {
+  .works-space { padding-bottom: 112px; }
+  .works-space-head { flex-direction: row; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; padding-top: 72px; }
+  .works-space-intro { max-width: 420px; }
+  .works-space-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 24px; margin-top: 48px; }
+  .works-space-card { gap: 14px; }
+  .works-space-photo picture.media { height: 288px; }
+  .works-space-cap { gap: 6px; padding-top: 4px; }
+  .works-space-name { font-size: 22px; }
+  .works-space-meta { font-size: 13px; }
+  .works-space-cta { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-top: 72px; padding: 40px 48px; }
+  .works-space-cta .body { font-size: 15px; }
+}
+@media (max-width: 899px) { .works-space-cta .btn { width: 100%; } }
+
 /* 作品集 */
 .works-wall-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 12px; margin-top: 28px; }
 .works-wall-item { display: flex; flex-direction: column; gap: 10px; }
@@ -1045,3 +1076,105 @@ body[data-page="plans"] .h1 { font-size: 32px; line-height: 1.35; }
   .works-wall-name { font-size: 20px; }
   .works-wall-meta { font-size: 13px; }
 }
+
+/* ==========================================================================
+   精選寓所：REVO 住宅地圖（內容由 tools/map/build_map.py 產生）
+   ========================================================================== */
+.map-intro { max-width: 720px; }
+.map-chips { margin: 24px calc(-1 * var(--gutter)) 16px; padding-inline: var(--gutter); }
+.map-chip-n { margin-left: 6px; opacity: .7; }
+
+.map-layout { display: flex; flex-direction: column; }
+@media (min-width: 900px) {
+  .map-layout { display: grid; grid-template-columns: minmax(0, 720fr) minmax(300px, 432fr); gap: 48px; align-items: start; margin-top: 56px; }
+}
+.map-col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+.map-frame { position: relative; overflow: hidden; background: #E4DED3; margin-inline: calc(-1 * var(--gutter)); }
+@media (min-width: 900px) { .map-frame { margin-inline: 0; border: 1px solid var(--card-line); border-radius: 6px; } }
+.map-view[hidden] { display: none; }
+.map-svg { position: relative; }
+.map-svg svg { display: block; width: 100%; height: auto; }
+.map-svg[data-map-src]:empty { aspect-ratio: 1 / 1; }
+@media (max-width: 899px) { .map-svg[data-map-src]:empty { aspect-ratio: 4 / 5; } }
+
+/* 全區地圖上的區域按鈕 */
+.map-hit { position: absolute; padding: 0; border: 0; border-radius: 12px; background: transparent; cursor: pointer; }
+.map-pin {
+  position: absolute; transform: translate(0, -50%); display: inline-flex; align-items: center; gap: 8px;
+  height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--ink); background: var(--card); color: var(--ink);
+  font-size: 13px; white-space: nowrap; cursor: pointer; box-shadow: 0 4px 14px rgba(31, 42, 51, .12);
+}
+.map-pin.is-left { transform: translate(-100%, -50%); }
+.map-pin:hover { background: #fff; }
+.map-pin-name { font-family: var(--serif); font-weight: 600; letter-spacing: .06em; }
+.map-pin-n { color: var(--label); }
+.map-pin-rent { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 999px; background: var(--ink); color: var(--on-dark); font-size: 10px; letter-spacing: .04em; }
+@media (min-width: 900px) { .map-pin { height: 40px; padding: 0 16px; font-size: 14px; } .map-pin-rent { font-size: 11px; } }
+
+.map-back {
+  position: absolute; left: 12px; top: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
+  height: 34px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line-3); background: var(--card); color: var(--ink);
+  font-size: 13px; cursor: pointer; box-shadow: 0 4px 14px rgba(31, 42, 51, .08);
+}
+.map-back[hidden] { display: none; }
+@media (min-width: 900px) { .map-back { left: 16px; top: 16px; height: 38px; font-size: 14px; } }
+
+/* 圖例 */
+.map-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-size: 12px; color: var(--muted); }
+@media (min-width: 900px) { .map-legend { gap: 8px 20px; font-size: 13px; } }
+.map-lg { display: inline-flex; align-items: center; gap: 8px; }
+.map-lg[hidden] { display: none; }
+.map-lg i { display: inline-block; flex-shrink: 0; }
+.lg-rent { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--ink); background: rgba(31, 42, 51, .09); }
+.lg-occ { width: 14px; height: 14px; border-radius: 50%; border: 1.3px dashed #8C6A4A; background: rgba(154, 91, 46, .12); }
+.lg-red, .lg-orange { width: 18px; height: 3px; border-radius: 2px; background: #B07A64; }
+.lg-orange { background: #C9965E; }
+.lg-station { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--body); background: #F7F3EC; }
+.lg-poi { width: 6px; height: 6px; border-radius: 50%; background: #8A7560; }
+
+/* 右側（手機在下方） */
+.map-side { margin-top: 28px; min-width: 0; }
+@media (min-width: 900px) { .map-side { margin-top: 0; } }
+.map-panel[hidden] { display: none; }
+.map-panel[data-map-panel="all"]:not([hidden]) { display: flex; flex-direction: column; gap: 12px; }
+@media (min-width: 900px) { .map-panel[data-map-panel="all"]:not([hidden]) { gap: 16px; } }
+.map-side-eyebrow { font-size: 13px; letter-spacing: .2em; color: var(--label); }
+@media (max-width: 899px) { .map-side-eyebrow { display: none; } }
+.map-area-card { display: flex; flex-direction: column; gap: 10px; padding: 20px; background: var(--card); border: 1px solid var(--card-line); border-radius: 6px; }
+@media (min-width: 900px) { .map-area-card { padding: 24px 28px; } }
+.map-area-card-head, .map-area-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.map-area-card-name { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: .06em; }
+@media (min-width: 900px) { .map-area-card-name { font-size: 22px; } }
+.map-area-sub { font-size: 13px; color: var(--label); white-space: nowrap; }
+.map-area-card p { font-size: 14px; line-height: 1.8; color: var(--body); }
+.map-area-go { align-self: flex-start; margin-top: 4px; padding: 0 0 4px; border: 0; border-bottom: 1px solid var(--ink); background: transparent; color: var(--ink); font-size: 15px; cursor: pointer; }
+
+.map-side-back { padding: 0; border: 0; background: transparent; color: var(--muted); font-size: 14px; cursor: pointer; }
+.map-area-head { margin: 0 0 8px; }
+@media (min-width: 900px) { .map-area-head { margin: 16px 0 12px; } }
+.map-area-name { font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: .06em; }
+@media (min-width: 900px) { .map-area-name { font-size: 28px; } }
+
+.map-homes { border-bottom: 1px solid var(--line-2); }
+.map-home { display: flex; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line-2); }
+.map-home-img { flex: 0 0 84px; width: 84px; height: 84px; }
+@media (min-width: 900px) { .map-home-img { flex-basis: 96px; width: 96px; height: 96px; } }
+.map-home-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.map-home-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.map-home-name { font-family: var(--serif); font-weight: 600; font-size: 17px; letter-spacing: .04em; }
+.map-tag { flex-shrink: 0; padding: 2px 10px; border-radius: 999px; border: 1px solid #8C7A63; color: var(--label); font-size: 12px; letter-spacing: .08em; white-space: nowrap; }
+.map-tag.is-rent { border-color: var(--ink); background: var(--ink); color: var(--on-dark); }
+.map-home-meta { font-size: 13px; color: var(--muted); }
+.btn.map-home-btn { align-self: flex-start; min-height: 40px; margin-top: 4px; padding: 0 20px; font-size: 14px; }
+.map-home-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 4px; font-size: 14px; }
+.map-home-links a { display: inline-flex; align-items: center; min-height: 32px; padding-bottom: 2px; border-bottom: 1px solid var(--ink); text-decoration: none; line-height: 1.3; }
+.map-home-links a.is-sub { border-bottom-color: var(--line-3); color: var(--muted); }
+
+/* 沒有 JavaScript 時：只顯示全區地圖與所有住宅清單，隱藏切換按鈕 */
+.map:not(.is-ready) [data-map-go] { display: none; }
+.map:not(.is-ready) .map-panel { display: block; }
+.map:not(.is-ready) .map-panel + .map-panel { margin-top: 28px; }
+
+/* 頁尾版權列的資料出處小字（頁面設定 footnote:） */
+.site-footer .footnote { margin-right: 12px; color: #8E969C; }

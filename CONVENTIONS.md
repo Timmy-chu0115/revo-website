@@ -38,6 +38,7 @@ cta: owner            # 頁首右上按鈕：owner＝LINE 諮詢（屋主）；r
 bottombar: owner      # 手機底部列：owner＝免費出租評估＋LINE 聊聊；resident＝預約參觀；none＝不顯示
 header: overlay       # 只有首頁用：頁首疊在大圖上
 og: fushan-31         # 分享預覽圖（需在 site.config.json 的 og_images）
+footnote: 地圖資料：內政部   # 選填：頁尾版權列旁的資料出處小字，只在這一頁出現
 -->
 ```
 
@@ -85,6 +86,15 @@ og: fushan-31         # 分享預覽圖（需在 site.config.json 的 og_images�
 - 屋主聯繫走 `{{LINE_OWNER}}`（個人 LINE，不能預帶文字）；住戶走 `{{LINE_RESIDENT}}`（官方帳號 @re.vo）。
   官方帳號預帶文字：`https://line.me/R/oaMessage/%40re.vo/?<網址編碼的文字>`（只在手機 LINE 有效）。
 - 外部連結加 `target="_blank" rel="noopener"`。
+
+## 住宅地圖（精選寓所頁）
+
+`/homes/` 的「REVO 住宅分佈」地圖由 `python3 tools/map/build_map.py` 產生，**不要手改** `homes.html` 裡 `<!-- MAP:START -->` 到 `<!-- MAP:END -->` 那段。
+- 資料：`tools/map/map-data.json`（住宅清單與狀態、範圍圈圓心、地標、捷運線）、`tools/map/towns.json`（行政區界，內政部資料）。
+- 範圍圈圓心是**偏移 120–200 公尺後**的大概位置。新增住宅時先把 Google 地圖座標偏移再填入，真實座標不要放進專案（GitHub 是公開的）。
+- 招租狀態改了（例如已入住 → 招租中）：改 `map-data.json` 的 `homes[].status` 與 `circles[].status`，再跑產生器。
+- 產生器會寫出 `public/assets/map/<區域>-d.svg`／`-m.svg`（點進區域才載入）並更新 homes.html，接著 `python3 build.py --only=homes`。
+- 互動在 `src/js/55-map.js`，樣式在 `src/css/55-map.css`。
 
 ## 網址
 

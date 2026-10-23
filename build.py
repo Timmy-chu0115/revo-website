@@ -214,6 +214,7 @@ def build_pages(images):
             'PATH': route,
             'OG_IMAGE': meta.get('og', CONFIG['og_images'][0]),
             'HEAD_EXTRA': meta.get('head', ''),
+            'FOOTNOTE': (f'<span class="footnote">{html.escape(meta["footnote"])}</span>' if meta.get('footnote') else ''),
             'HEADER_CTA': fill(HEADER_CTA.get(meta.get('cta', 'owner'), ''), {}).replace('{LINE_OWNER}', common['LINE_OWNER']).replace('{LINE_RESIDENT}', common['LINE_RESIDENT']),
         })
         for n in ('plans', 'works', 'homes', 'about'):
