@@ -17,7 +17,7 @@ Cloudflare（Workers 靜態網站）：推到 GitHub main 會自動部署，設�
 
 | 位置 | 內容 |
 |---|---|
-| `site.config.json` | 網址、LINE 連結、表單網址 |
+| `site.config.json` | 網址、LINE 連結、表單網址、Turnstile 網站金鑰 |
 | `src/partials/` | `<head>`、頁首（含手機選單）、頁尾。**所有頁共用，改這裡全站一起變** |
 | `src/pages/*.html` | 每頁內容。開頭註解是頁面設定（見下） |
 | `src/css/00-base.css` `10-layout.css` | 共用樣式與元件 |
@@ -110,3 +110,30 @@ footnote: 地圖資料：內政部   # 選填：頁尾版權列旁的資料出�
 | 免費出租評估 | `/evaluate/` | evaluate.html |
 | 隱私權政策 | `/privacy/` | privacy.html |
 | 找不到頁面 | （404.html） | 404.html |
+
+## 表單防機器人（Cloudflare Turnstile）
+
+`site.config.json` 的 `turnstile_sitekey` 留空＝不啟用（只靠隱藏欄位 `website` 與後端「同一支手機 60 秒一筆」）。啟用步驟：
+
+1. Cloudflare 後台 → Turnstile → 新增網站，主機名稱填 `revo-website.revolife-info.workers.dev`（之後換網域要再加），模式選「受管理」。拿到「網站金鑰」與「密鑰」。
+2. 密鑰只放 Apps Script：專案設定 → 指令碼屬性，新增 `TURNSTILE_SECRET`。**不要放進這個 repo**（repo 是公開的）。
+3. Apps Script 的 `doPost` 開頭加上驗證（前端送來的欄位名稱是 `turnstile`）：
+
+   ```js
+   function verifyTurnstile_(token) {
+     var secret = PropertiesService.getScriptProperties().getProperty('TURNSTILE_SECRET');
+     if (!secret) return true;                     // 還沒設定密鑰 → 不擋
+     if (!token) return false;
+     var res = UrlFetchApp.fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+       method: 'post', payload: { secret: secret, response: token }, muteHttpExceptions: true
+     });
+     try { return JSON.parse(res.getContentText()).success === true; } catch (e) { return false; }
+   }
+   // doPost(e) 裡：
+   // if (!verifyTurnstile_(e.parameter.turnstile)) return json_({ ok: false, error: 'verify' });
+   ```
+   （`json_` 換成現有回傳 JSON 的寫法。）部署 → 管理部署作業 → 編輯 → 新版本，網址不變。
+4. 網站金鑰填進 `site.config.json` 的 `turnstile_sitekey`，`python3 build.py`，commit 推上 main。
+5. 實際送一筆測試，確認試算表有收到。
+
+前端行為：有金鑰時表單送出鈕上方會出現驗證框；Turnstile 載不到（網路或擋廣告）不會卡住送出，交給後端判斷，驗證不過會顯示 LINE 備援。

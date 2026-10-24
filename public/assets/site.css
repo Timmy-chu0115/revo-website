@@ -446,6 +446,7 @@ input[type="number"].eval-input::-webkit-outer-spin-button { -webkit-appearance:
 .eval-consent input[aria-invalid="true"] { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .eval-submit { display: flex; flex-direction: column; gap: 12px; }
+.eval-turnstile { min-height: 65px; }
 .eval-btn { min-height: 54px; letter-spacing: 0.04em; }
 .eval-btn[disabled] { opacity: .65; cursor: progress; }
 .eval-note { font-size: 12px; text-align: center; color: var(--muted); }
