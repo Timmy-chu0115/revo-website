@@ -77,7 +77,7 @@
   if (!form) return;
   var $ = window.REVO.$, $$ = window.REVO.$$;
   var LINE_OWNER = 'https://line.me/ti/p/~revo.life';
-  var TS_KEY = '';
+  var TS_KEY = '0x4AAAAAAFkFbCfFhYuTH5m0';
   var done = document.getElementById('eval-done');
   var alertBox = document.getElementById('eval-alert');
   var btn = $('.eval-btn', form);
