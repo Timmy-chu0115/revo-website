@@ -5,10 +5,31 @@
   if (!form) return;
   var $ = window.REVO.$, $$ = window.REVO.$$;
   var LINE_OWNER = '{{LINE_OWNER}}';
+  var TS_KEY = '{{TURNSTILE_SITEKEY}}';
   var done = document.getElementById('eval-done');
   var alertBox = document.getElementById('eval-alert');
   var btn = $('.eval-btn', form);
   var btnText = btn.textContent;
+
+  /* ---------- 防機器人（Cloudflare Turnstile）----------
+   * site.config.json 的 turnstile_sitekey 有填才啟用；空白就維持原本只靠隱藏欄位。
+   * 驗證碼一次有效，每次送出後都要 reset 換新的。 */
+  var tsWidget = null, tsFailed = false;
+  if (TS_KEY) {
+    var tsBox = document.getElementById('eval-turnstile');
+    window.revoTurnstileReady = function () {
+      tsBox.hidden = false;
+      tsWidget = window.turnstile.render(tsBox, { sitekey: TS_KEY, language: 'zh-tw', size: 'flexible' });
+    };
+    var tsScript = document.createElement('script');
+    tsScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=revoTurnstileReady';
+    tsScript.async = true;
+    // 載不到（網路或擋廣告）就不卡住送出，交給後端判斷；驗證不過會顯示 LINE 備援
+    tsScript.onerror = function () { tsFailed = true; };
+    document.head.appendChild(tsScript);
+  }
+  function tsToken() { return tsWidget !== null && window.turnstile ? window.turnstile.getResponse(tsWidget) || '' : ''; }
+  function tsReset() { if (tsWidget !== null && window.turnstile) window.turnstile.reset(tsWidget); }
 
   /* ---------- 選項按鈕 ---------- */
   $$('[data-chips]', form).forEach(function (group) {
@@ -86,7 +107,8 @@
       note: el['note'].value.trim(),
       consent: el['consent'].checked ? 'yes' : '',
       page: location.pathname,
-      website: el['website'].value
+      website: el['website'].value,
+      turnstile: tsToken()
     };
   }
 
@@ -157,6 +179,11 @@
       return;
     }
 
+    if (TS_KEY && !d.turnstile && !tsFailed) {
+      showAlert('正在確認你不是機器人，請稍候幾秒再按一次送出。');
+      return;
+    }
+
     var params = new URLSearchParams();
     Object.keys(d).forEach(function (k) { params.append(k, d[k]); });
     sending = true;
@@ -182,6 +209,6 @@
         else { showAlert(FAIL); }
       })
       .catch(function () { showAlert(FAIL); })
-      .then(function () { sending = false; setSending(false); });
+      .then(function () { sending = false; setSending(false); tsReset(); });
   });
 })();

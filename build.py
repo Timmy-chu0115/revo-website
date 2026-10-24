@@ -84,7 +84,7 @@ def build_images():
     for path in sorted(glob.glob(os.path.join(ASSETS_SRC, '*'))):
         key, ext = os.path.splitext(os.path.basename(path))
         ext = ext.lower()
-        if ext in ('.png', '.svg'):
+        if ext in ('.png', '.svg', '.webp'):
             shutil.copy(path, os.path.join(out_icon, key + ext))
             continue
         im = ImageOps.exif_transpose(Image.open(path)).convert('RGB')
@@ -196,6 +196,7 @@ def build_pages(images):
         'LINE_OWNER': CONFIG['line_owner'],
         'LINE_RESIDENT': CONFIG['line_resident'],
         'FORM_ENDPOINT': CONFIG['form_endpoint'],
+        'TURNSTILE_SITEKEY': CONFIG.get('turnstile_sitekey', ''),
         'YEAR': str(datetime.date.today().year),
         'VERSION': version,
     }
@@ -259,7 +260,8 @@ def build_meta(sitemap, common):
     write(os.path.join(OUT, '_headers'),
           '/assets/*\n  Cache-Control: public, max-age=2592000\n'
           '/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n'
-          '  Permissions-Policy: camera=(), microphone=(), geolocation=()\n')
+          '  Permissions-Policy: camera=(), microphone=(), geolocation=()\n'
+          '  X-Frame-Options: DENY\n  Content-Security-Policy: frame-ancestors \'none\'\n')
 
 
 def main():
