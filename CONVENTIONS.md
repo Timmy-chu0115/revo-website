@@ -117,22 +117,7 @@ footnote: 地圖資料：內政部   # 選填：頁尾版權列旁的資料出�
 
 1. Cloudflare 後台 → Turnstile → 新增網站，主機名稱填 `revo-website.revolife-info.workers.dev`（之後換網域要再加），模式選「受管理」。拿到「網站金鑰」與「密鑰」。
 2. 密鑰只放 Apps Script：專案設定 → 指令碼屬性，新增 `TURNSTILE_SECRET`。**不要放進這個 repo**（repo 是公開的）。
-3. Apps Script 的 `doPost` 開頭加上驗證（前端送來的欄位名稱是 `turnstile`）：
-
-   ```js
-   function verifyTurnstile_(token) {
-     var secret = PropertiesService.getScriptProperties().getProperty('TURNSTILE_SECRET');
-     if (!secret) return true;                     // 還沒設定密鑰 → 不擋
-     if (!token) return false;
-     var res = UrlFetchApp.fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-       method: 'post', payload: { secret: secret, response: token }, muteHttpExceptions: true
-     });
-     try { return JSON.parse(res.getContentText()).success === true; } catch (e) { return false; }
-   }
-   // doPost(e) 裡：
-   // if (!verifyTurnstile_(e.parameter.turnstile)) return json_({ ok: false, error: 'verify' });
-   ```
-   （`json_` 換成現有回傳 JSON 的寫法。）部署 → 管理部署作業 → 編輯 → 新版本，網址不變。
+3. Apps Script 已內建驗證（`doPost` 讀 `cf-turnstile-response`，有設定 `TURNSTILE_SECRET` 才檢查，驗證不過回 `{ok:false, error:'verify'}`）。指令碼屬性是執行時才讀，加了不用重新部署。
 4. 網站金鑰填進 `site.config.json` 的 `turnstile_sitekey`，`python3 build.py`，commit 推上 main。
 5. 實際送一筆測試，確認試算表有收到。
 

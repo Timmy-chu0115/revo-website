@@ -180,7 +180,7 @@
       consent: el['consent'].checked ? 'yes' : '',
       page: location.pathname,
       website: el['website'].value,
-      turnstile: tsToken()
+      'cf-turnstile-response': tsToken()   // Apps Script 讀的欄位名稱
     };
   }
 
@@ -251,7 +251,7 @@
       return;
     }
 
-    if (TS_KEY && !d.turnstile && !tsFailed) {
+    if (TS_KEY && !d['cf-turnstile-response'] && !tsFailed) {
       showAlert('正在確認你不是機器人，請稍候幾秒再按一次送出。');
       return;
     }
