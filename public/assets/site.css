@@ -704,6 +704,7 @@ ol.home-steps { display: flex; flex-direction: column; gap: 28px; margin-top: 32
 .homes-crumb [aria-current] { color: var(--ink); }
 .homes-status { align-self: flex-start; margin-top: 8px; padding: 5px 12px; border-radius: 999px; background: var(--ink); color: var(--on-dark); font-size: 12px; letter-spacing: 0.1em; }
 .homes-status.sm { margin-top: 0; }
+.homes-status.is-occ { background: var(--card); color: var(--muted); box-shadow: inset 0 0 0 1px var(--line-2); }
 .homes-d-title { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.35; letter-spacing: 0.05em; }
 .homes-d-sub { font-size: 14px; line-height: 1.75; color: var(--body); }
 @media (min-width: 900px) {

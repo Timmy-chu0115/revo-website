@@ -565,10 +565,10 @@
    "name": "未來章",
    "area": "qiaotou",
    "rooms": "兩房一衛",
-   "status": "rent",
+   "status": "occ",
    "img": "weilai-11-living-alt",
    "pos": "50% 50%",
-   "detail": "/homes/weilai-zhang/"
+   "works": "/homes/weilai-zhang/"
   },
   {
    "name": "未來序",
