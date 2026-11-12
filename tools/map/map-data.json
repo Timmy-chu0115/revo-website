@@ -38,9 +38,10 @@
    {
     "names": [
      "都會公園",
-     "悅讀"
+     "悅讀",
+     "悅庭"
     ],
-    "status": "occ",
+    "status": "rent",
     "lat": 22.73558,
     "lng": 120.29933
    },
@@ -596,6 +597,15 @@
    "img": "yuedu-wall-desktop",
    "pos": "40% 50%",
    "works": "/works/#wall"
+  },
+  {
+   "name": "悅庭",
+   "area": "qiaotou",
+   "rooms": "三房二衛",
+   "status": "rent",
+   "img": "yueting-01-living",
+   "pos": "50% 50%",
+   "detail": "/homes/yueting/"
   },
   {
    "name": "丹映",

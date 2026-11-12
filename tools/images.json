@@ -884,5 +884,136 @@
    1200,
    1800
   ]
+ },
+ "yueting-01-living": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-02-living-hall": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-03-dining": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-04-entry": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-05-kitchen": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-06-balcony": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-07-master": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-08-master-desk": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-09-second": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-10-study": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
+ },
+ "yueting-11-bath": {
+  "fallback": 1012,
+  "h": 1800,
+  "w": 1012,
+  "widths": [
+   480,
+   800,
+   1012
+  ]
+ },
+ "yueting-12-courtyard": {
+  "fallback": 1200,
+  "h": 1200,
+  "w": 1800,
+  "widths": [
+   480,
+   800,
+   1200,
+   1800
+  ]
  }
 }

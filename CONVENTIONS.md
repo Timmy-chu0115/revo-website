@@ -106,6 +106,7 @@ footnote: 地圖資料：內政部   # 選填：頁尾版權列旁的資料出�
 | REVO 精選寓所 | `/homes/` | homes.html |
 | 未來境 | `/homes/weilai-jing/` | homes-weilai-jing.html |
 | 未來章 | `/homes/weilai-zhang/` | homes-weilai-zhang.html |
+| 悅庭 | `/homes/yueting/` | homes-yueting.html |
 | 關於 REVO | `/about/` | about.html |
 | 免費出租評估 | `/evaluate/` | evaluate.html |
 | 隱私權政策 | `/privacy/` | privacy.html |
