@@ -31,7 +31,8 @@
 .map-pin-name { font-family: var(--serif); font-weight: 600; letter-spacing: .06em; }
 .map-pin-n { color: var(--label); }
 .map-pin-rent { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 999px; background: var(--ink); color: var(--on-dark); font-size: 10px; letter-spacing: .04em; }
-@media (min-width: 900px) { .map-pin { height: 40px; padding: 0 16px; font-size: 14px; } .map-pin-rent { font-size: 11px; } }
+.map-pin-soon { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--ink); color: var(--ink); font-size: 10px; letter-spacing: .04em; }
+@media (min-width: 900px) { .map-pin { height: 40px; padding: 0 16px; font-size: 14px; } .map-pin-rent, .map-pin-soon { font-size: 11px; } }
 
 .map-back {
   position: absolute; left: 12px; top: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
@@ -49,6 +50,7 @@
 .map-lg i { display: inline-block; flex-shrink: 0; }
 .lg-rent { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--ink); background: rgba(31, 42, 51, .09); }
 .lg-occ { width: 14px; height: 14px; border-radius: 50%; border: 1.3px dashed #8C6A4A; background: rgba(154, 91, 46, .12); }
+.lg-soon { width: 14px; height: 14px; border-radius: 50%; border: 1.8px dotted var(--ink); background: #F7F3EC; }
 .lg-red, .lg-orange { width: 18px; height: 3px; border-radius: 2px; background: #B07A64; }
 .lg-orange { background: #C9965E; }
 .lg-station { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--body); background: #F7F3EC; }
@@ -86,7 +88,14 @@
 .map-home-name { font-family: var(--serif); font-weight: 600; font-size: 17px; letter-spacing: .04em; }
 .map-tag { flex-shrink: 0; padding: 2px 10px; border-radius: 999px; border: 1px solid #8C7A63; color: var(--label); font-size: 12px; letter-spacing: .08em; white-space: nowrap; }
 .map-tag.is-rent { border-color: var(--ink); background: var(--ink); color: var(--on-dark); }
+.map-tag.is-soon { border-color: var(--ink); color: var(--ink); }
 .map-home-meta { font-size: 13px; color: var(--muted); }
+/* 即將推出：還沒有照片，用編號色塊代替 */
+.map-home-ph { flex: 0 0 84px; width: 84px; height: 84px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; background: var(--sand-2); color: var(--label); }
+@media (min-width: 900px) { .map-home-ph { flex-basis: 96px; width: 96px; height: 96px; } }
+.map-home-ph-brand { font-size: 10px; letter-spacing: .28em; padding-left: .28em; }
+.map-home-ph-no { font-family: var(--serif); font-weight: 600; font-size: 18px; letter-spacing: .04em; color: var(--ink); }
+.map-home-eta { font-size: 13px; color: var(--label); }
 .btn.map-home-btn { align-self: flex-start; min-height: 40px; margin-top: 4px; padding: 0 20px; font-size: 14px; }
 .map-home-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 4px; font-size: 14px; }
 .map-home-links a { display: inline-flex; align-items: center; min-height: 32px; padding-bottom: 2px; border-bottom: 1px solid var(--ink); text-decoration: none; line-height: 1.3; }

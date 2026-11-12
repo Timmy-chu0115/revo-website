@@ -65,6 +65,24 @@
     "lat": 22.61022,
     "lng": 120.48472
    }
+  ],
+  "gushan": [
+   {
+    "names": [
+     "Project No.14"
+    ],
+    "status": "soon",
+    "lat": 22.66452,
+    "lng": 120.29912
+   },
+   {
+    "names": [
+     "Project No.15"
+    ],
+    "status": "soon",
+    "lat": 22.66198,
+    "lng": 120.28892
+   }
   ]
  },
  "landmarks": {
@@ -233,6 +251,71 @@
     "lng": 120.486,
     "dx": 1.6,
     "dy": 0.4,
+    "anchor": "start"
+   }
+  ],
+  "gushan": [
+   {
+    "name": "高雄市立美術館",
+    "kind": "poi",
+    "lat": 22.65669,
+    "lng": 120.28656,
+    "dx": -1.6,
+    "dy": 0.4,
+    "anchor": "end"
+   },
+   {
+    "name": "台鐵美術館站",
+    "kind": "station",
+    "lat": 22.65206,
+    "lng": 120.28156,
+    "dx": 1.6,
+    "dy": 0.4,
+    "anchor": "start"
+   },
+   {
+    "name": "農十六公園",
+    "kind": "poi",
+    "lat": 22.65544,
+    "lng": 120.29494,
+    "dx": 1.6,
+    "dy": 0.4,
+    "anchor": "start"
+   },
+   {
+    "name": "凹子底森林公園",
+    "kind": "poi",
+    "lat": 22.659683,
+    "lng": 120.298393,
+    "dx": 1.6,
+    "dy": 1.3,
+    "anchor": "start"
+   },
+   {
+    "name": "凹子底站",
+    "kind": "station",
+    "lat": 22.6575,
+    "lng": 120.30306,
+    "dx": 1.6,
+    "dy": 0.4,
+    "anchor": "start"
+   },
+   {
+    "name": "巨蛋站",
+    "kind": "station",
+    "lat": 22.66611,
+    "lng": 120.30333,
+    "dx": 1.6,
+    "dy": 0.4,
+    "anchor": "start"
+   },
+   {
+    "name": "瑞豐夜市",
+    "kind": "poi",
+    "lat": 22.666222,
+    "lng": 120.299694,
+    "dx": 1.6,
+    "dy": -0.6,
     "anchor": "start"
    }
   ]
@@ -471,6 +554,11 @@
    22.627,
    120.487,
    5.6
+  ],
+  "gushan": [
+   22.6595,
+   120.2925,
+   1.9
   ]
  },
  "areas_phone": {
@@ -491,6 +579,12 @@
    120.487,
    3.75,
    5.0
+  ],
+  "gushan": [
+   22.6595,
+   120.2925,
+   1.55,
+   1.9
   ]
  },
  "circle_label": {
@@ -500,7 +594,9 @@
   "青曦": "l",
   "都會公園|悅讀": "l",
   "未來境|未來章|未來序": "r",
-  "丹映": "r"
+  "丹映": "r",
+  "Project No.14": "b",
+  "Project No.15": "l"
  },
  "circle_label_phone": {
   "福山公園": "b",
@@ -509,7 +605,9 @@
   "青曦": "b",
   "都會公園|悅讀": "b",
   "未來境|未來章|未來序": "b",
-  "丹映": "r"
+  "丹映": "r",
+  "Project No.14": "t",
+  "Project No.15": "b"
  },
  "overview": [
   22.668,
@@ -615,6 +713,20 @@
    "img": "danying-wall-desktop",
    "pos": "50% 50%",
    "works": "/works/#danying"
+  },
+  {
+   "name": "Project No.14",
+   "area": "gushan",
+   "rooms": "房型規劃中",
+   "status": "soon",
+   "eta": "2026 年 12 月"
+  },
+  {
+   "name": "Project No.15",
+   "area": "gushan",
+   "rooms": "房型規劃中",
+   "status": "soon",
+   "eta": "2027 年 1 月"
   }
  ],
  "area_names": {
@@ -632,6 +744,11 @@
    "萬丹",
    "萬丹鄉",
    "屏東縣萬丹鄉"
+  ],
+  "gushan": [
+   "鼓山",
+   "鼓山區",
+   "高雄市鼓山區"
   ]
  }
 }

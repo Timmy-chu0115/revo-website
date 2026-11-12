@@ -93,6 +93,9 @@ footnote: 地圖資料：內政部   # 選填：頁尾版權列旁的資料出�
 - 資料：`tools/map/map-data.json`（住宅清單與狀態、範圍圈圓心、地標、捷運線）、`tools/map/towns.json`（行政區界，內政部資料）。
 - 範圍圈圓心是**偏移 120–200 公尺後**的大概位置。新增住宅時先把 Google 地圖座標偏移再填入，真實座標不要放進專案（GitHub 是公開的）。
 - 招租狀態改了（例如已入住 → 招租中）：改 `map-data.json` 的 `homes[].status` 與 `circles[].status`，再跑產生器。
+- 狀態有三種：`rent` 招租中、`occ` 已入住、`soon` 即將推出（已確定、還沒推出，沒有照片與正式案名）。`soon` 的住宅在 `homes[]` 不填 `img`，改填 `eta`（例如 `"2026 年 12 月"`），名稱先用 `Project No.xx`；地圖與清單會顯示編號色塊、預計推出時間與「加 LINE，推出時通知我」。精選寓所頁上方的「即將推出」卡片在 `homes.html`，要手動同步。
+- 正式推出、開始招租時：把 `name` 改成正式案名、`status` 改 `rent`、補 `img` 與 `detail`、刪掉 `eta`，`circles` 與 `circle_label` 的名稱一起改，並把 `homes.html` 的即將推出卡片移到招租中。
+- 新增區域：`map-data.json` 的 `area_names`、`areas_desktop`、`areas_phone`、`circles`、`landmarks` 各加一個區域代號，再到 `build_map.py` 的 `AREAS`、`AREA_LABELS`、`CHIP_AT` 加上。
 - 產生器會寫出 `public/assets/map/<區域>-d.svg`／`-m.svg`（點進區域才載入）並更新 homes.html，接著 `python3 build.py --only=homes`。
 - 互動在 `src/js/55-map.js`，樣式在 `src/css/55-map.css`。
 

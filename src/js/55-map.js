@@ -1,4 +1,4 @@
-/* 精選寓所：REVO 住宅地圖（全區 ↔ 左營／橋頭／萬丹） */
+/* 精選寓所：REVO 住宅地圖（全區 ↔ 各區域） */
 (function () {
   'use strict';
   var R = window.REVO;

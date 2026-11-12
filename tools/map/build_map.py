@@ -30,11 +30,18 @@ OUT_SVG = os.path.join(ROOT, 'public', 'assets', 'map')
 RED_C, ORANGE_C = '#B07A64', '#C9965E'
 MRT = DATA['mrt_red']
 ORANGE = DATA['mrt_orange']
-AREAS = ['zuoying', 'qiaotou', 'wandan']
+AREAS = ['zuoying', 'qiaotou', 'gushan', 'wandan']
 AREA_ZH = {k: v[1] for k, v in DATA['area_names'].items()}
 SHORT = {k: v[0] for k, v in DATA['area_names'].items()}
 ACTIVE = set(AREA_ZH.values())
 RENT_NAMES = {h['name'] for h in DATA['homes'] if h['status'] == 'rent'}
+SOON_NAMES = {h['name'] for h in DATA['homes'] if h['status'] == 'soon'}  # 即將推出（籌備中，尚未推出）
+ZH_NUM = '零一二三四五六七八九十'
+
+
+def text_w(s, fs):
+    """估計文字寬度：中文一字約 1 個字級，英數約 0.55"""
+    return sum(fs * (0.55 if ord(ch) < 128 else 1.0) for ch in s)
 
 
 class Proj:
@@ -109,10 +116,13 @@ def line_visible(P, pts):
     return False
 
 
-def rent_pill(lx, y, nm, fs, anchor, mid=False):
-    w_name = len(nm) * fs * 1.18 / (2 if mid else 1)
-    pw, ph = fs * 3.6, fs * 1.25
+def rent_pill(lx, y, nm, fs, anchor, mid=False, soon=False):
+    w_name = (text_w(nm, fs * 1.18) if soon else len(nm) * fs * 1.18) / (2 if mid else 1)
+    pw, ph = fs * (4.4 if soon else 3.6), fs * 1.25
     x = lx + w_name + fs * 0.4 if anchor == 'start' else lx - w_name - fs * 0.4 - pw
+    if soon:  # 即將推出：米白底、深色細框，和招租中的實心深色區分
+        return (f'<rect x="{x:.1f}" y="{y - ph * 0.8:.1f}" width="{pw:.1f}" height="{ph:.1f}" rx="{ph / 2:.1f}" fill="#F7F3EC" stroke="#1F2A33" stroke-width="1"/>'
+                + text(x + pw / 2, y - ph * 0.8 + ph * 0.72, '即將推出', fs * 0.82, '#1F2A33', 500, 'middle', halo=False))
     return (f'<rect x="{x:.1f}" y="{y - ph * 0.8:.1f}" width="{pw:.1f}" height="{ph:.1f}" rx="{ph / 2:.1f}" fill="#1F2A33"/>'
             + text(x + pw / 2, y - ph * 0.8 + ph * 0.72, '招租中', fs * 0.82, '#F5F0E8', 500, 'middle', halo=False))
 
@@ -137,6 +147,7 @@ AREA_LABELS = {
     'zuoying': [('左營區', 22.6935, 120.2860), ('鼓山區', 22.6560, 120.2780), ('楠梓區', 22.7030, 120.3170), ('三民區', 22.6600, 120.3200)],
     'qiaotou': [('橋頭區', 22.7545, 120.2985), ('楠梓區', 22.7300, 120.2950), ('燕巢區', 22.7610, 120.3290)],
     'wandan': [('萬丹鄉', 22.5960, 120.4700), ('屏東市', 22.6620, 120.4720)],
+    'gushan': [('鼓山區', 22.6480, 120.2905), ('左營區', 22.6720, 120.2830), ('三民區', 22.6470, 120.3060)],
 }
 
 
@@ -171,6 +182,8 @@ def area_svg(key, phone):
         x, y = P.xy(c['lat'], c['lng'])
         if c['status'] == 'rent':
             parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="#1F2A33" fill-opacity="0.06" stroke="#1F2A33" stroke-width="1.6"/>')
+        elif c['status'] == 'soon':
+            parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="#F7F3EC" fill-opacity="0.55" stroke="#1F2A33" stroke-width="1.8" stroke-dasharray="0.1 4.5" stroke-linecap="round"/>')
         else:
             parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="#9A5B2E" fill-opacity="0.12" stroke="#8C6A4A" stroke-width="1.3" stroke-dasharray="4 3"/>')
         mode = DATA['circle_label_phone' if phone else 'circle_label'].get('|'.join(names), 'r')
@@ -184,10 +197,11 @@ def area_svg(key, phone):
             top = y + r + fs * 1.3 if mode == 'b' else y - r - (len(names) - 1) * lh - fs * 0.5
         for i, nm in enumerate(names):
             yy = top + i * lh
-            if nm in RENT_NAMES:
-                tx = lx - fs * 2.0 if anchor == 'middle' else lx
+            if nm in RENT_NAMES or nm in SOON_NAMES:
+                soon = nm in SOON_NAMES
+                tx = lx - fs * (2.4 if soon else 2.0) if anchor == 'middle' else lx
                 labels.append(text(tx, yy, nm, fs * 1.18, '#1F2A33', 600, anchor, serif=True))
-                labels.append(rent_pill(tx, yy, nm, fs, 'start' if anchor != 'end' else 'end', mid=anchor == 'middle'))
+                labels.append(rent_pill(tx, yy, nm, fs, 'start' if anchor != 'end' else 'end', mid=anchor == 'middle', soon=soon))
             else:
                 labels.append(text(lx, yy, nm, fs * 1.18, '#1F2A33', 600, anchor, serif=True))
     ir = fs * 0.62
@@ -213,7 +227,8 @@ def area_svg(key, phone):
 OVER_LABELS = [('楠梓區', 22.7270, 120.2900), ('岡山區', 22.7900, 120.2950), ('燕巢區', 22.7820, 120.3700), ('仁武區', 22.7000, 120.3550),
                ('鼓山區', 22.6450, 120.2780), ('三民區', 22.6430, 120.3150), ('鳳山區', 22.6080, 120.3600), ('大樹區', 22.6950, 120.4300),
                ('大寮區', 22.5900, 120.4100), ('鳥松區', 22.6600, 120.3700), ('屏東市', 22.6750, 120.4850), ('高雄市', 22.5700, 120.3000), ('屏東縣', 22.5600, 120.5000)]
-CHIP_AT = {'zuoying': (22.6760, 120.3200), 'qiaotou': (22.7470, 120.3260), 'wandan': (22.6150, 120.4750)}
+CHIP_AT = {'zuoying': (22.6760, 120.3200), 'qiaotou': (22.7470, 120.3260), 'gushan': (22.6480, 120.3000), 'wandan': (22.6150, 120.4750)}
+PIN_LEFT = {'wandan'}  # 按鈕往左長
 
 
 def overview(phone):
@@ -224,7 +239,7 @@ def overview(phone):
         W, H, fs = 720, 720, 13
         clat, clng, hw = DATA['overview']
     P = Proj(clat, clng, hw, W, H)
-    parts = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="REVO 住宅分佈：左營、橋頭、萬丹">',
+    parts = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="REVO 住宅分佈：{"、".join(SHORT[k] for k in AREAS)}">',
              f'<rect width="{W}" height="{H}" fill="#E4DED3"/>', town_paths(P, ACTIVE, 0.9),
              line_path(P, MRT, RED_C, 2, 0.75), line_path(P, ORANGE, ORANGE_C, 2, 0.85)]
     for pts, col, keep in ((MRT, RED_C, ('R3', 'R16', 'R23')), (ORANGE, ORANGE_C, ('O2', 'OT1'))):
@@ -243,26 +258,32 @@ def overview(phone):
     for key in AREAS:
         for c in DATA['circles'][key]:
             x, y = P.xy(c['lat'], c['lng'])
-            parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.5" fill="{"#1F2A33" if c["status"] == "rent" else "#8C6A4A"}" stroke="#F7F3EC" stroke-width="1.5"/>')
+            if c['status'] == 'soon':
+                parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="#F7F3EC" stroke="#1F2A33" stroke-width="1.6"/>')
+            else:
+                parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.5" fill="{"#1F2A33" if c["status"] == "rent" else "#8C6A4A"}" stroke="#F7F3EC" stroke-width="1.5"/>')
     parts.append('</svg>')
-    # 疊在地圖上的按鈕：整個行政區的感應範圍 + 區域標籤
+    # 疊在地圖上的按鈕：整個行政區的感應範圍（依行政區界裁切，相鄰的左營、鼓山才不會互相蓋到）+ 區域標籤
     btns = []
     for key in AREAS:
         t = [t for t in TOWNS if t['name'] == AREA_ZH[key]][0]
-        xs, ys = [], []
-        for ring in t['rings']:
-            for lng, lat in ring:
-                px, py = P.xy(lat, lng)
-                xs.append(min(max(px, 0), W))
-                ys.append(min(max(py, 0), H))
+        ring = max(t['rings'], key=len)
+        pts = [(min(max(px, 0), W), min(max(py, 0), H)) for px, py in (P.xy(lat, lng) for lng, lat in ring)]
+        h = len(pts) // 2
+        pts = rdp(pts[:h + 1], 1.5)[:-1] + rdp(pts[h:], 1.5)
+        x0, y0 = min(p[0] for p in pts), min(p[1] for p in pts)
+        bw, bh = (max(p[0] for p in pts) - x0) or 1, (max(p[1] for p in pts) - y0) or 1
+        poly = ','.join(f'{(px - x0) / bw * 100:.1f}% {(py - y0) / bh * 100:.1f}%' for px, py in pts)
         btns.append(f'<button type="button" class="map-hit" data-map-go="{key}" tabindex="-1" aria-hidden="true" '
-                    f'style="left:{min(xs) / W * 100:.1f}%;top:{min(ys) / H * 100:.1f}%;width:{(max(xs) - min(xs)) / W * 100:.1f}%;height:{(max(ys) - min(ys)) / H * 100:.1f}%"></button>')
+                    f'style="left:{x0 / W * 100:.1f}%;top:{y0 / H * 100:.1f}%;width:{bw / W * 100:.1f}%;height:{bh / H * 100:.1f}%;clip-path:polygon({poly})"></button>')
     for key in AREAS:
         x, y = P.xy(*CHIP_AT[key])
         homes = [h for h in DATA['homes'] if h['area'] == key]
         rent = sum(1 for h in homes if h['status'] == 'rent')
-        cls = 'map-pin is-left' if key == 'wandan' else 'map-pin'
+        soon = sum(1 for h in homes if h['status'] == 'soon')
+        cls = 'map-pin is-left' if key in PIN_LEFT else 'map-pin'
         extra = f'<span class="map-pin-rent">{rent} 間招租中</span>' if rent else ''
+        extra += f'<span class="map-pin-soon">{soon} 間即將推出</span>' if soon else ''
         btns.append(f'<button type="button" class="{cls}" data-map-go="{key}" aria-controls="map-frame" '
                     f'style="left:{x / W * 100:.1f}%;top:{y / H * 100:.1f}%"><span class="map-pin-name">{SHORT[key]}</span>'
                     f'<span class="map-pin-n">{len(homes)} 間</span>{extra}</button>')
@@ -272,18 +293,39 @@ def overview(phone):
 def area_sub(key):
     homes = [h for h in DATA['homes'] if h['area'] == key]
     rent = sum(1 for h in homes if h['status'] == 'rent')
-    return f'{len(homes)} 間・' + (f'{rent} 間招租中' if rent else '目前全部已入住')
+    soon = sum(1 for h in homes if h['status'] == 'soon')
+    if soon == len(homes):
+        return f'{len(homes)} 間・即將推出'
+    notes = ([f'{rent} 間招租中'] if rent else []) + ([f'{soon} 間即將推出'] if soon else [])
+    return f'{len(homes)} 間・' + ('・'.join(notes) if notes else '目前全部已入住')
 
 
-def line_link(name):
-    return 'https://line.me/R/oaMessage/%40re.vo/?' + urllib.parse.quote(f'您好，我想登記 REVO｜{name} 的空房通知')
+def line_link(name, soon=False):
+    kind = '推出通知' if soon else '空房通知'
+    return 'https://line.me/R/oaMessage/%40re.vo/?' + urllib.parse.quote(f'您好，我想登記 REVO｜{name} 的{kind}')
 
 
 ARROW = ('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" '
          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>')
 
 
+def soon_item(h):
+    """即將推出：還沒有照片與正式案名，用編號色塊代替照片"""
+    place = AREA_ZH[h['area']]
+    no = h['name'].replace('Project ', '')
+    return (f'<li class="map-home is-soon">\n'
+            f'<div class="map-home-ph" aria-hidden="true"><span class="map-home-ph-brand">REVO</span><span class="map-home-ph-no">{html.escape(no)}</span></div>\n'
+            f'<div class="map-home-body">\n<div class="map-home-top"><h4 class="map-home-name">REVO｜{h["name"]}</h4>'
+            f'<span class="map-tag is-soon">即將推出</span></div>\n'
+            f'<div class="map-home-meta">{place}・{h["rooms"]}</div>\n'
+            f'<div class="map-home-eta">預計 {h["eta"]}推出</div>\n'
+            f'<div class="map-home-links"><a href="{html.escape(line_link(h["name"], soon=True))}" target="_blank" rel="noopener">加 LINE，推出時通知我</a></div>\n'
+            f'</div>\n</li>')
+
+
 def home_item(h):
+    if h['status'] == 'soon':
+        return soon_item(h)
     place = AREA_ZH[h['area']]
     tag = ('<span class="map-tag is-rent">招租中</span>' if h['status'] == 'rent'
            else '<span class="map-tag">已入住</span>')
@@ -300,6 +342,8 @@ def home_item(h):
 
 def section(version):
     total = len(DATA['homes'])
+    names = ['屏東萬丹' if k == 'wandan' else SHORT[k] for k in AREAS]
+    area_list = '、'.join(names[:-1]) + '與' + names[-1]
     chips = ['<button type="button" class="chip" data-map-go="all" aria-pressed="true" aria-controls="map-frame">全區</button>']
     for key in AREAS:
         n = sum(1 for h in DATA['homes'] if h['area'] == key)
@@ -318,7 +362,7 @@ def section(version):
         cards.append(f'<div class="map-area-card">\n<div class="map-area-card-head"><h3 class="map-area-card-name">{AREA_ZH[key]}</h3>'
                      f'<span class="map-area-sub">{area_sub(key)}</span></div>\n<p>{names}</p>\n'
                      f'<button type="button" class="map-area-go" data-map-go="{key}" aria-controls="map-frame">看這一區的位置 →</button>\n</div>')
-    panels = [f'<div class="map-panel" data-map-panel="all">\n<div class="map-side-eyebrow">三個區域・{total} 間住宅</div>\n' + '\n'.join(cards) + '\n</div>']
+    panels = [f'<div class="map-panel" data-map-panel="all">\n<div class="map-side-eyebrow">{ZH_NUM[len(AREAS)]}個區域・{total} 間住宅</div>\n' + '\n'.join(cards) + '\n</div>']
     for key in AREAS:
         items = '\n'.join(home_item(h) for h in DATA['homes'] if h['area'] == key)
         panels.append(f'<div class="map-panel" data-map-panel="{key}">\n'
@@ -328,10 +372,11 @@ def section(version):
     legend = ('<div class="map-legend">'
               '<span class="map-lg"><i class="lg-rent"></i>招租中</span>'
               '<span class="map-lg"><i class="lg-occ"></i>已入住</span>'
-              '<span class="map-lg" data-legend="all zuoying qiaotou"><i class="lg-red"></i>捷運紅線</span>'
+              + ('<span class="map-lg"><i class="lg-soon"></i>即將推出</span>' if SOON_NAMES else '') +
+              '<span class="map-lg" data-legend="all zuoying qiaotou gushan"><i class="lg-red"></i>捷運紅線</span>'
               '<span class="map-lg" data-legend="all"><i class="lg-orange"></i>捷運橘線</span>'
-              '<span class="map-lg" data-legend="zuoying qiaotou wandan" hidden><i class="lg-station"></i>車站</span>'
-              '<span class="map-lg" data-legend="zuoying qiaotou" hidden><i class="lg-poi"></i>地標</span>'
+              '<span class="map-lg" data-legend="zuoying qiaotou gushan wandan" hidden><i class="lg-station"></i>車站</span>'
+              '<span class="map-lg" data-legend="zuoying qiaotou gushan" hidden><i class="lg-poi"></i>地標</span>'
               '</div>')
     return f'''<!-- MAP:START（這一段由 tools/map/build_map.py 產生，請勿手動修改） -->
 <section class="section map" id="map" data-map>
@@ -339,7 +384,7 @@ def section(version):
 <div class="stack map-intro" style="--gap: 16px;">
 <div class="eyebrow">REVO 住宅分佈</div>
 <h2 class="h2">REVO 經營的住宅，<br class="m-br">都在這裡</h2>
-<p class="lead">目前 REVO 經營的住宅分佈在左營、橋頭與屏東萬丹。點選區域，看每一間的大概位置與附近的捷運、公園。</p>
+<p class="lead">目前 REVO 經營的住宅分佈在{area_list}。點選區域，看每一間的大概位置與附近的捷運、公園。</p>
 </div>
 <div class="chips scroll map-chips only-mobile" role="group" aria-label="選擇區域">
 {chr(10).join(chips)}
