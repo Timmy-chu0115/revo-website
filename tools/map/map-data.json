@@ -685,7 +685,7 @@
    "status": "occ",
    "img": "metro-wall-desktop",
    "pos": "50% 50%",
-   "works": "/works/#metro"
+   "works": "/works/#wall"
   },
   {
    "name": "悅讀",
@@ -703,7 +703,7 @@
    "status": "occ",
    "img": "yueting-01-living",
    "pos": "50% 50%",
-   "works": "/homes/yueting/"
+   "works": "/works/#yueting"
   },
   {
    "name": "丹映",
