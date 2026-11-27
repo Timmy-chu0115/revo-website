@@ -41,7 +41,7 @@
      "悅讀",
      "悅庭"
     ],
-    "status": "rent",
+    "status": "occ",
     "lat": 22.73558,
     "lng": 120.29933
    },
@@ -700,10 +700,10 @@
    "name": "悅庭",
    "area": "qiaotou",
    "rooms": "三房二衛",
-   "status": "rent",
+   "status": "occ",
    "img": "yueting-01-living",
    "pos": "50% 50%",
-   "detail": "/homes/yueting/"
+   "works": "/homes/yueting/"
   },
   {
    "name": "丹映",
