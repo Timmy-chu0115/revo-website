@@ -1015,5 +1015,34 @@
    1200,
    1800
   ]
+ },
+ "yueting-pair1-before": {
+  "fallback": 1024,
+  "h": 768,
+  "w": 1024,
+  "widths": [
+   480,
+   800,
+   1024
+  ]
+ },
+ "yueting-pair2-before": {
+  "fallback": 1024,
+  "h": 768,
+  "w": 1024,
+  "widths": [
+   480,
+   800,
+   1024
+  ]
+ },
+ "yueting-pair3-before": {
+  "fallback": 768,
+  "h": 1024,
+  "w": 768,
+  "widths": [
+   480,
+   768
+  ]
  }
 }

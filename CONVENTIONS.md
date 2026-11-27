@@ -105,7 +105,7 @@ footnote: 地圖資料：內政部   # 選填：頁尾版權列旁的資料出�
 |---|---|---|
 | 首頁 | `/` | index.html |
 | 屋主服務 | `/plans/` | plans.html |
-| 作品案例 | `/works/`（各案錨點 `#fushan` `#senhuo` `#metro` `#liantan` `#danying`） | works.html |
+| 作品案例 | `/works/`（各案錨點 `#fushan` `#senhuo` `#yueting` `#liantan` `#danying`） | works.html |
 | REVO 精選寓所 | `/homes/` | homes.html |
 | 未來境 | `/homes/weilai-jing/` | homes-weilai-jing.html |
 | 未來章 | `/homes/weilai-zhang/` | homes-weilai-zhang.html |
