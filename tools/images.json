@@ -1026,6 +1026,15 @@
    1024
   ]
  },
+ "yueting-pair1-before-phone": {
+  "fallback": 768,
+  "h": 1024,
+  "w": 768,
+  "widths": [
+   480,
+   768
+  ]
+ },
  "yueting-pair2-before": {
   "fallback": 1024,
   "h": 768,
